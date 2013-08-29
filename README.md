@@ -1,18 +1,25 @@
 ## Fires
 
-## Updating data
+This is the repository for TileMill project of maps for intense and recent fires at infoamazonia.org.
 
-1. Clone this repository locally;
+### Loading maps locally
 
-1. Unzip data.zip at 'data' folder;
+1. Clone this repository at your machine;
 
-1. Download source file (extents West South East North: -85 -59 -29 16 ) at:
+1. Symlink TileMill projects:
 
-		http://firms.modaps.eosdis.nasa.gov/download/
+		ln -s /path/to/repository/tilemill/fires-intense ~/Documents/Mapbox/project 
+		ln -s /path/to/repository/tilemill/fires-recent ~/Documents/Mapbox/project	
+
+### Updating data
+
+1. Download new data setting extents (West South East North) = (-85 -59 -29 16):
+
+    http://firms.modaps.eosdis.nasa.gov/download/
 
 1. Unzip the downloaded file at `data` folder;
 
-1. Import downloaded files, replacing {new_data_file} with download filename without extension:
+1. Import downloaded files, replacing {new_data_file} with downloaded filename, without extension:
 
 		spatialite_tool -i -shp data/{new_data_file} -d data/fires.sqlite -t fires -c UTF-8 -s 4326
 	
@@ -20,20 +27,15 @@
 
 		spatialite data/fires.sqlite < sql/update.sql
 
-1. Symlink TileMill projects:
-
-		ln -s /path/to/repository/tilemill/fires-intense ~/Documents/Mapbox/project 
-		ln -s /path/to/repository/tilemill/fires-recent ~/Documents/Mapbox/project	
-
 1. Regenerate maps and upload to Mapbox:
 
 1. Commit changes to GitHub.
 
-## Regenarating data from scratch
+### Regenarating data from scratch
 
-Download source files, spliting by 3-4 years periods, e.g. 2000 to 2003, 2004-2006, 2007-2009,2010-2012, and so forth.
+If you need to regenate from scratch, download source files spliting by 3-4 years periods, e.g. 2000 to 2003, 2004-2006, 2007-2009,2010-2012, and so forth.
 
-Merge then with the following commands:
+Merge then:
 
 		ogr2ogr -select "ACQ_DATE","BRIGHTNESS","FRP" fires.shp fires_2000-2003.shp
 		ogr2ogr -append -select "ACQ_DATE","BRIGHTNESS","FRP" fires.shp fires_2004-2006.shp
