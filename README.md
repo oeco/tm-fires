@@ -19,13 +19,11 @@ This is the repository for TileMill project of maps for intense and recent fires
 
 1. Unzip the downloaded file at `data` folder;
 
-1. Import downloaded files, replacing {new_data_file} with downloaded filename, without extension:
+1. Import downloaded files, replacing {new_data_file} with downloaded filename **without extension**:
 
-		spatialite_tool -i -shp data/{new_data_file} -d data/fires.sqlite -t fires -c UTF-8 -s 4326
-	
-1. Update recent and intense fires information at database:
-
-		spatialite data/fires.sqlite < sql/update.sql
+		cd data
+		spatialite_tool -i -shp {new_data_file} -d fires.sqlite -t fires -c UTF-8 -s 4326
+		spatialite fires.sqlite < ../sql/update.sql
 
 1. Regenerate maps and upload to Mapbox:
 
