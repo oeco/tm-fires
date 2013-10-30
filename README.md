@@ -6,10 +6,14 @@ This is the repository for TileMill project of maps for intense and recent fires
 
 1. Clone this repository at your machine;
 
+```    
+    git clone git@github.com:oeco/tm-fires-nasa.git
+```
+
 1. Symlink TileMill projects:
 
-		ln -s /path/to/repository/tilemill/fires-intense ~/Documents/Mapbox/project 
-		ln -s /path/to/repository/tilemill/fires-recent ~/Documents/Mapbox/project	
+		ln -s /path/to/repository/tilemill/fires-intense ~/Documents/Mapbox/project/fires-intense 
+		ln -s /path/to/repository/tilemill/fires-recent ~/Documents/Mapbox/project/fires-recent	
 
 ### Updating data
 
@@ -19,11 +23,13 @@ This is the repository for TileMill project of maps for intense and recent fires
 
 1. Unzip the downloaded file at `data` folder;
 
-1. Import downloaded files, replacing {new_data_file} with downloaded filename **without extension**:
+1. Import downloaded files, replacing 'new_data_filename' with downloaded filename **without extension**:
 
 		cd data
-		spatialite_tool -i -shp {new_data_file} -d fires.sqlite -t fires -c UTF-8 -s 4326
+		spatialite_tool -i -shp new_data_filename -d fires.sqlite -t fires -c UTF-8 -s 4326
 		spatialite fires.sqlite < ../sql/update.sql
+
+1. Update month and year at legend and teaser texts. 
 
 1. Regenerate maps and upload to Mapbox:
 
@@ -48,3 +54,4 @@ Init a Spatialite database with this data:
 Create recent and intense tables:
 
 		spatialite data/fires.sqlite < sql/create.sql
+		
