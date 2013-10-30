@@ -4,7 +4,7 @@
   marker-fill:#ff2c00;
   marker-line-opacity:0;
   marker-allow-overlap:true;  
-  marker-opacity:.075;
+  marker-opacity:.075; 
   
   /*[zoom<6]// nível toda ASul   
    
