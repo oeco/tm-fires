@@ -35,6 +35,12 @@ This is the repository for TileMill project of maps for intense and recent fires
 
 1. Commit changes to GitHub.
 
+### Changing the legends
+
+1. Log in at the InfoAmazonia Wordpress JEO platform
+2. Go to the 'Maps' section and enter on Fire map
+3. On the 'HTML Legend' box, on the right hand column change the legend according to the month in 3 languages 
+
 ### Regenarating data from scratch
 
 If you need to regenate from scratch, download source files spliting by 3-4 years periods, e.g. 2000 to 2003, 2004-2006, 2007-2009,2010-2012, and so forth.
